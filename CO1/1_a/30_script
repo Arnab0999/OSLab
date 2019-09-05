@@ -1,0 +1,17 @@
+#!/bin/bash 
+a=$1
+op=$2
+b=$3
+re='^[0-9]+$'
+if ![[$a =~ $re]] ; then
+   echo "Not a number" >&2; exit 1
+fi
+if ![$b =~ $re]; then
+	echo "Not a number">&2; exit 1
+fi
+if !["$op" != "/"]; then
+	if [ "$b" -eq "0" ]; then
+   		echo "Infinity">&2; exit 1
+	fi
+fi
+echo "scale=4; $a $op $b" | bc
