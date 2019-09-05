@@ -1,0 +1,5 @@
+w -h
+
+num=$(who | wc -l)
+
+echo "Total number of people Logged in: $num"
